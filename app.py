@@ -419,11 +419,12 @@ def server_error(e):
 
 if __name__ == '__main__':
     init_db()
+    port = int(os.environ.get('PORT', 5000))
     print("\n" + "=" * 55)
     print("  🌿 CropCare AI – Starting Server")
     print("=" * 55)
     print(f"  Model trained: {'✓ YES' if model_is_trained() else '✗ NO (run train_model.py)'}")
     print(f"  Disease DB:    {'✓ Loaded' if os.path.exists(DISEASE_INFO) else '✗ Missing'}")
-    print(f"  URL:           http://127.0.0.1:5000")
+    print(f"  URL:           http://0.0.0.0:{port}")
     print("=" * 55 + "\n")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=port)
