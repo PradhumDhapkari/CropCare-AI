@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction History – CropCare AI{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section style="background: linear-gradient(135deg, #1a4d2e 0%, #2d7a4f 100%); padding: 60px 20px; text-align: center; color: #fff;">
+  <h1 style="font-size: 2.6rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px;">🕐 Prediction History</h1>
+  <p style="font-size: 1.08rem; opacity: 0.88; max-width: 500px; margin: 0 auto; line-height: 1.7;">
+    A log of all plant disease detections performed in this session.
+  </p>
+</section>
+
+<!-- Summary Stats Row -->
+{% if records %}
+{% set total      = records | length %}
+{% set healthy    = records | selectattr('label', 'lower') | selectattr('label', 'search', 'healthy') | list | length %}
+{% set diseased   = total - healthy %}
+<section style="padding: 36px 20px; background: #f0faf4;">
+  <div style="max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+
+    <div style="background: #fff; border-radius: 14px; padding: 24px 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 4px solid var(--primary);">
+      <div style="font-size: 2.4rem; font-weight: 900; color: var(--primary);">{{ total }}</div>
+      <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 4px;">Total Predictions</div>
+    </div>
+
+    <div style="background: #fff; border-radius: 14px; padding: 24px 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 4px solid #22c55e;">
+      <div style="font-size: 2.4rem; font-weight: 900; color: #22c55e;">{{ healthy }}</div>
+      <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 4px;">✅ Healthy Plants</div>
+    </div>
+
+    <div style="background: #fff; border-radius: 14px; padding: 24px 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 4px solid #ef4444;">
+      <div style="font-size: 2.4rem; font-weight: 900; color: #ef4444;">{{ diseased }}</div>
+      <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 4px;">🦠 Diseased Plants</div>
+    </div>
+
+    <div style="background: #fff; border-radius: 14px; padding: 24px 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 4px solid #f59e0b;">
+      <div style="font-size: 2.4rem; font-weight: 900; color: #f59e0b;">
+        {% if total > 0 %}{{ ((healthy / total) * 100) | round(1) }}%{% else %}—{% endif %}
+      </div>
+      <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 4px;">Healthy Rate</div>
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- Table / Empty State -->
+<section style="padding: 48px 20px 72px; background: var(--bg);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+
+    {% if not records %}
+    <!-- Empty State -->
+    <div style="text-align: center; padding: 80px 20px;">
+      <div style="font-size: 5rem; margin-bottom: 20px; opacity: 0.5;">🌿</div>
+      <h2 style="font-size: 1.6rem; font-weight: 700; color: var(--text); margin-bottom: 12px;">No predictions yet</h2>
+      <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 36px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+        You haven't analysed any plant images yet. Start by uploading a leaf photo on the detection page.
+      </p>
+      <a href="/detect"
+         style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; padding: 14px 32px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1rem; box-shadow: 0 4px 16px rgba(45,122,79,0.3);">
+        🔍 Try Detecting a Disease!
+      </a>
+    </div>
+
+    {% else %}
+    <!-- Action Bar -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
+      <h2 style="font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 0;">
+        📋 All Predictions <span style="color: var(--text-muted); font-size: 1rem; font-weight: 400;">({{ records | length }} records)</span>
+      </h2>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="/detect"
+           style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; padding: 10px 22px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 0.9rem;">
+          🔍 New Detection
+        </a>
+        <a href="/history"
+           style="display: inline-flex; align-items: center; gap: 8px; background: #fff; color: #ef4444; border: 2px solid #fca5a5; padding: 10px 22px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 0.9rem;"
+           onclick="return confirm('Are you sure you want to clear all history?')">
+          🗑️ Clear History
+        </a>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div style="overflow-x: auto; background: var(--surface); border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+      <table class="history-table" style="width: 100%; border-collapse: collapse; min-width: 700px;">
+        <thead>
+          <tr style="background: linear-gradient(135deg, #1a4d2e, #2d7a4f);">
+            <th style="padding: 16px 18px; text-align: left; color: #fff; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap;">#</th>
+            <th style="padding: 16px 18px; text-align: left; color: #fff; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px;">Image</th>
+            <th style="padding: 16px 18px; text-align: left; color: #fff; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px;">Crop</th>
+            <th style="padding: 16px 18px; text-align: left; color: #fff; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px;">Disease</th>
+            <th style="padding: 16px 18px; text-align: left; color: #fff; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px;">Status</th>
+            <th style="padding: 16px 18px; text-align: left; color: #fff; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px;">Confidence</th>
+            <th style="padding: 16px 18px; text-align: left; color: #fff; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap;">Date / Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in records %}
+          {% set is_healthy = 'healthy' in r.label | lower %}
+          <tr style="border-bottom: 1px solid #f0f4f8; transition: background 0.15s;" onmouseover="this.style.background='#f8fffe'" onmouseout="this.style.background='transparent'">
+
+            <!-- Row Number -->
+            <td style="padding: 14px 18px; color: var(--text-muted); font-size: 0.88rem; font-weight: 600;">
+              {{ loop.index }}
+            </td>
+
+            <!-- Thumbnail -->
+            <td style="padding: 14px 18px;">
+              <img
+                src="/static/uploads/{{ r.filename }}"
+                alt="Plant image {{ loop.index }}"
+                style="width:50px; height:50px; object-fit:cover; border-radius:8px; border: 2px solid #e2e8f0; display: block;"
+                onerror="this.src='/static/img/placeholder-leaf.png'; this.onerror=null;"
+              >
+            </td>
+
+            <!-- Crop -->
+            <td style="padding: 14px 18px; color: var(--text); font-size: 0.92rem; font-weight: 600; white-space: nowrap;">
+              🌾 {{ r.crop if r.crop else '—' }}
+            </td>
+
+            <!-- Disease Name -->
+            <td style="padding: 14px 18px; color: var(--text); font-size: 0.88rem; max-width: 200px;">
+              <span title="{{ r.label }}" style="display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
+                {{ r.label if r.label else '—' }}
+              </span>
+            </td>
+
+            <!-- Status Badge -->
+            <td style="padding: 14px 18px;">
+              {% if is_healthy %}
+              <span style="display: inline-flex; align-items: center; gap: 5px; background: #d1fae5; color: #065f46; padding: 5px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; white-space: nowrap;">
+                ✅ Healthy
+              </span>
+              {% else %}
+              <span style="display: inline-flex; align-items: center; gap: 5px; background: #fee2e2; color: #991b1b; padding: 5px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; white-space: nowrap;">
+                🦠 Diseased
+              </span>
+              {% endif %}
+            </td>
+
+            <!-- Confidence -->
+            <td style="padding: 14px 18px;">
+              {% set conf = r.confidence if r.confidence else 0 %}
+              {% if conf >= 90 %}
+                {% set conf_color = '#16a34a' %}
+              {% elif conf >= 70 %}
+                {% set conf_color = '#f59e0b' %}
+              {% else %}
+                {% set conf_color = '#ef4444' %}
+              {% endif %}
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="flex: 1; min-width: 60px; background: #f1f5f9; border-radius: 20px; height: 6px; overflow: hidden;">
+                  <div style="width: {{ conf }}%; background: {{ conf_color }}; height: 100%; border-radius: 20px;"></div>
+                </div>
+                <span style="color: {{ conf_color }}; font-size: 0.88rem; font-weight: 700; min-width: 42px; text-align: right;">{{ conf }}%</span>
+              </div>
+            </td>
+
+            <!-- Date/Time -->
+            <td style="padding: 14px 18px; color: var(--text-muted); font-size: 0.84rem; white-space: nowrap;">
+              {{ r.timestamp if r.timestamp else '—' }}
+            </td>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer link to detect -->
+    <div style="text-align: center; margin-top: 36px;">
+      <a href="/detect" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 0.95rem;">
+        ← Back to Disease Detection
+      </a>
+    </div>
+
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

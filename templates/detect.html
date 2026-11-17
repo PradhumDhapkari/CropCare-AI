@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}Detect Crop Disease – CropCare AI{% endblock %}
+{% block meta_desc %}Upload a crop leaf image to detect plant diseases using AI. Get instant diagnosis with symptoms, causes, and prevention recommendations.{% endblock %}
+
+{% block content %}
+<div class="upload-page">
+  <div class="upload-container">
+
+    <!-- Header -->
+    <div class="upload-header">
+      <div class="section-label">🔍 AI Analysis</div>
+      <h1 class="section-title">Crop Disease Detection</h1>
+      <p class="section-desc">
+        Upload a clear photo of a crop leaf. Our MobileNetV2 model will analyze it
+        and identify any disease with confidence scores and treatment guidance.
+      </p>
+    </div>
+
+    <!-- Model not trained warning -->
+    {% if not model_trained %}
+    <div class="model-warning" id="model-warning-banner" role="alert">
+      <div class="warn-icon">⚠️</div>
+      <div>
+        <h4>Model Not Yet Trained</h4>
+        <p>
+          The AI model needs to be trained before it can make predictions.
+          You can still explore the interface, but predictions will return an informational message.
+        </p>
+        <p class="mt-1">
+          To train the model:
+          <br>1. Download PlantVillage dataset from Kaggle
+          <br>2. Extract to <code>dataset/PlantVillage/</code>
+          <br>3. Run: <code>python model/train_model.py</code>
+          <br>4. Restart the app
+        </p>
+        <p class="mt-1">
+          <a href="{{ url_for('about') }}#training" style="color:#856404;text-decoration:underline;font-weight:600;">
+            See full training guide →
+          </a>
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Upload + Result Grid -->
+    <div class="upload-grid">
+
+      <!-- LEFT: Upload Panel -->
+      <div>
+        <div class="upload-panel">
+          <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:20px;color:var(--text-primary);">
+            📁 Upload Leaf Image
+          </h2>
+
+          <!-- Error alert -->
+          <div class="alert alert-error" id="upload-error" style="display:none;">
+            <span class="alert-icon">❌</span>
+            <span class="alert-msg">Invalid file format.</span>
+          </div>
+
+          <!-- Drop zone -->
+          <div class="drop-zone" id="drop-zone" role="button" tabindex="0"
+               aria-label="Drag and drop image or click to browse">
+            <input type="file" id="file-input" accept=".jpg,.jpeg,.png" aria-label="Choose image file">
+            <div class="drop-icon" aria-hidden="true">📂</div>
+            <h3>Drag & Drop your image here</h3>
+            <p>or click to browse files</p>
+            <div class="file-types">Supported formats: JPG, JPEG, PNG &nbsp;|&nbsp; Max size: 16 MB</div>
+          </div>
+
+          <!-- Image preview -->
+          <div class="preview-panel" id="preview-pane">
+            <img id="preview-img" src="" alt="Uploaded leaf preview" class="image-preview">
+            <div class="file-info">
+              <span class="file-name" id="file-name">filename.jpg</span>
+              <span class="file-size" id="file-size">0 KB</span>
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <button class="btn-analyze" id="analyze-btn" disabled aria-label="Analyze the uploaded image">
+            <span>🧠</span> Analyze Image
+          </button>
+          <button class="btn-reset" id="reset-btn" aria-label="Clear and reset">
+            🔄 Clear / Upload New Image
+          </button>
+        </div>
+
+        <!-- Tips panel -->
+        <div class="card mt-3" style="padding:20px 24px;">
+          <h3 style="font-size:0.9rem;font-weight:700;color:var(--text-secondary);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px;">
+            📌 Tips for Best Results
+          </h3>
+          <ul style="list-style:none;padding:0;">
+            <li style="padding:5px 0;font-size:0.85rem;color:var(--text-secondary);display:flex;gap:8px;">
+              <span>✅</span> Use a close-up photo of a single leaf
+            </li>
+            <li style="padding:5px 0;font-size:0.85rem;color:var(--text-secondary);display:flex;gap:8px;">
+              <span>✅</span> Ensure the leaf fills most of the frame
+            </li>
+            <li style="padding:5px 0;font-size:0.85rem;color:var(--text-secondary);display:flex;gap:8px;">
+              <span>✅</span> Good lighting with no heavy shadows
+            </li>
+            <li style="padding:5px 0;font-size:0.85rem;color:var(--text-secondary);display:flex;gap:8px;">
+              <span>✅</span> Both sides of the leaf can help diagnosis
+            </li>
+            <li style="padding:5px 0;font-size:0.85rem;color:var(--text-secondary);display:flex;gap:8px;">
+              <span>❌</span> Avoid blurry or heavily compressed images
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results Panel -->
+      <div>
+        <div id="result-panel" class="result-panel" role="region" aria-live="polite" aria-label="Detection results">
+          <!-- Results rendered dynamically by JavaScript -->
+        </div>
+
+        <!-- Placeholder when no result yet -->
+        <div id="result-placeholder" class="upload-panel" style="text-align:center;padding:60px 24px;">
+          <div style="font-size:4rem;margin-bottom:16px;">🌿</div>
+          <h3 style="font-weight:700;color:var(--text-secondary);margin-bottom:8px;">
+            Results Appear Here
+          </h3>
+          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.8;">
+            Upload a leaf image and click "Analyze Image" to see the AI prediction,
+            confidence score, and detailed disease information.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;text-align:left;">
+            <div style="background:var(--bg);border-radius:10px;padding:16px;border:1px solid var(--border);">
+              <div style="font-size:1.5rem;margin-bottom:6px;">🎯</div>
+              <div style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Disease Name</div>
+            </div>
+            <div style="background:var(--bg);border-radius:10px;padding:16px;border:1px solid var(--border);">
+              <div style="font-size:1.5rem;margin-bottom:6px;">📊</div>
+              <div style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Confidence %</div>
+            </div>
+            <div style="background:var(--bg);border-radius:10px;padding:16px;border:1px solid var(--border);">
+              <div style="font-size:1.5rem;margin-bottom:6px;">💊</div>
+              <div style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">Treatment Tips</div>
+            </div>
+            <div style="background:var(--bg);border-radius:10px;padding:16px;border:1px solid var(--border);">
+              <div style="font-size:1.5rem;margin-bottom:6px;">📄</div>
+              <div style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);">PDF Report</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent History snippet -->
+    <div class="card mt-4" style="padding:28px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <h3 style="font-weight:700;font-size:1rem;">🕐 Recent Predictions</h3>
+        <a href="{{ url_for('history') }}" style="font-size:0.85rem;color:var(--primary);font-weight:600;">
+          View All →
+        </a>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-muted);">
+        Your recent detections will appear here. <a href="{{ url_for('history') }}">View full history</a>.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Hide placeholder when results are shown
+  const resultPanel      = document.getElementById('result-panel');
+  const resultPlaceholder = document.getElementById('result-placeholder');
+
+  const resultObserver = new MutationObserver(() => {
+    if (resultPanel.classList.contains('visible')) {
+      resultPlaceholder.style.display = 'none';
+    } else {
+      resultPlaceholder.style.display = '';
+    }
+  });
+
+  if (resultPanel) {
+    resultObserver.observe(resultPanel, { attributes: true, attributeFilter: ['class'] });
+  }
+</script>
+{% endblock %}

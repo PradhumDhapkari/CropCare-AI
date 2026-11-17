@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}Disease Library – CropCare AI{% endblock %}
+{% block meta_desc %}Browse our comprehensive crop disease library. Search by disease name, crop type, or category. Includes symptoms, causes, and prevention for 38 plant diseases.{% endblock %}
+
+{% block content %}
+<div class="section">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="library-header">
+      <div class="section-label">📚 Reference</div>
+      <h1 class="section-title">Crop Disease Library</h1>
+      <p class="section-desc">
+        A searchable database of {{ diseases|length }} crop diseases from the PlantVillage dataset.
+        Find symptoms, causes, prevention tips, and management strategies.
+      </p>
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="card" style="padding:24px;margin-bottom:32px;">
+      <div class="search-bar">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="disease-search" placeholder="Search diseases, crops, symptoms…"
+                 aria-label="Search diseases" autocomplete="off">
+        </div>
+        <select class="filter-select" id="crop-filter" aria-label="Filter by crop">
+          <option value="">All Crops</option>
+          {% for crop in crops %}
+          <option value="{{ crop|lower }}">{{ crop }}</option>
+          {% endfor %}
+        </select>
+        <select class="filter-select" id="category-filter" aria-label="Filter by category">
+          <option value="">All Categories</option>
+          {% for cat in categories %}
+          <option value="{{ cat|lower }}">{{ cat }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div style="margin-top:12px;font-size:0.85rem;color:var(--text-muted);">
+        Showing <strong id="disease-count">{{ diseases|length }} diseases</strong> found
+      </div>
+    </div>
+
+    <!-- Disease Cards -->
+    <div class="diseases-grid" id="diseases-grid">
+      {% for d in diseases %}
+      <article class="disease-card"
+               data-name="{{ d.disease|lower }}"
+               data-crop="{{ d.crop|lower }}"
+               data-cat="{{ d.category|lower }}"
+               data-desc="{{ d.description|lower }}"
+               data-syms="{{ d.symptoms|join(' ')|lower }}"
+               aria-label="{{ d.disease }} – {{ d.crop }}">
+
+        <div class="disease-card-header">
+          <div>
+            <div class="disease-name">
+              {% if d.is_healthy %}✅{% else %}🦠{% endif %}
+              {{ d.disease }}
+            </div>
+            <div class="crop-name">🌱 {{ d.crop }}</div>
+          </div>
+          <span class="category-badge {{ d.category|lower }}">{{ d.category }}</span>
+        </div>
+
+        <div class="disease-card-body">
+          <p class="disease-desc">{{ d.description }}</p>
+
+          {% if d.symptoms %}
+          <div class="symptom-tags">
+            {% for symptom in d.symptoms[:3] %}
+            <span class="symptom-tag">{{ symptom[:40] }}{% if symptom|length > 40 %}…{% endif %}</span>
+            {% endfor %}
+            {% if d.symptoms|length > 3 %}
+            <span class="symptom-tag">+{{ d.symptoms|length - 3 }} more</span>
+            {% endif %}
+          </div>
+          {% endif %}
+
+          <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn" style="padding:7px 16px;font-size:0.8rem;background:rgba(30,125,52,0.08);color:var(--primary);border:1px solid rgba(30,125,52,0.2);"
+                    onclick="toggleCard(this)" aria-expanded="false">
+              View Details ▼
+            </button>
+            <a href="{{ url_for('detect') }}" class="btn"
+               style="padding:7px 16px;font-size:0.8rem;background:var(--primary);color:white;">
+              🔍 Detect
+            </a>
+          </div>
+
+          <!-- Expandable details -->
+          <div class="card-details" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;">
+            {% if d.causes %}
+            <div style="margin-bottom:14px;">
+              <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:8px;">⚡ Causes</div>
+              <ul style="list-style:none;padding:0;">
+                {% for c in d.causes %}
+                <li style="font-size:0.82rem;color:var(--text-secondary);padding:3px 0;display:flex;gap:8px;">
+                  <span style="color:var(--primary);flex-shrink:0;">•</span> {{ c }}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+
+            {% if d.prevention %}
+            <div style="margin-bottom:14px;">
+              <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:8px;">🛡️ Prevention</div>
+              <ul style="list-style:none;padding:0;">
+                {% for p in d.prevention %}
+                <li style="font-size:0.82rem;color:var(--text-secondary);padding:3px 0;display:flex;gap:8px;">
+                  <span style="color:var(--success);flex-shrink:0;">✓</span> {{ p }}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+
+            {% if d.management %}
+            <div>
+              <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:8px;">💊 Management</div>
+              <ul style="list-style:none;padding:0;">
+                {% for m in d.management %}
+                <li style="font-size:0.82rem;color:var(--text-secondary);padding:3px 0;display:flex;gap:8px;">
+                  <span style="color:var(--warning);flex-shrink:0;">→</span> {{ m }}
+                </li>
+                {% endfor %}
+              </ul>
+              <p style="font-size:0.72rem;color:var(--text-muted);font-style:italic;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);">
+                ⚠️ {{ d.disclaimer }}
+              </p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Empty state -->
+    <div id="no-results" style="display:none;text-align:center;padding:60px;color:var(--text-muted);">
+      <div style="font-size:3rem;margin-bottom:16px;">🔍</div>
+      <h3 style="font-weight:600;margin-bottom:8px;">No diseases found</h3>
+      <p style="font-size:0.9rem;">Try a different search term or clear the filters.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function toggleCard(btn) {
+  const card = btn.closest('.disease-card');
+  const details = card.querySelector('.card-details');
+  const isOpen = details.style.display !== 'none';
+  details.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? 'View Details ▼' : 'Hide Details ▲';
+  btn.setAttribute('aria-expanded', !isOpen);
+}
+
+// Hook no-results display into filter
+const origFilter = window.applyFilter;
+document.addEventListener('DOMContentLoaded', () => {
+  const noResults = document.getElementById('no-results');
+  const grid = document.getElementById('diseases-grid');
+
+  const checkEmpty = () => {
+    const visible = grid.querySelectorAll('.disease-card:not([style*="display: none"])').length;
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  };
+
+  ['disease-search','crop-filter','category-filter'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => setTimeout(checkEmpty, 50));
+  });
+});
+</script>
+{% endblock %}

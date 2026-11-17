@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Diagnosis Result – CropCare AI{% endblock %}
+{% block meta_desc %}AI-powered diagnosis result showing identified crop disease, confidence score, symptoms, causes, and recommended management practices.{% endblock %}
+
+{% block content %}
+<div class="upload-page">
+  <div class="upload-container">
+    <div class="upload-header">
+      <div class="section-label">🔬 Diagnostic Report</div>
+      <h1 class="section-title">Analysis Result</h1>
+      <p class="section-desc">Detailed AI diagnosis, severity breakdown, and actionable agricultural recommendations.</p>
+    </div>
+
+    {% if result %}
+    <div class="upload-grid">
+      <!-- Left Column: Image & Confidence -->
+      <div>
+        <div class="card" style="padding: 24px; text-align: center;">
+          <img src="{{ url_for('static', filename='uploads/' + (result.image_filename or 'default.jpg')) }}" 
+               alt="Diagnosed Crop Leaf" 
+               class="image-preview" 
+               style="max-height: 280px; width: 100%; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+          
+          <div style="display: flex; justify-content: space-around; align-items: center; padding: 12px; background: var(--bg); border-radius: 10px;">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Confidence</div>
+              <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">{{ result.confidence }}%</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Health Status</div>
+              <div>
+                {% if result.is_healthy %}
+                <span class="badge" style="background: rgba(30,125,52,0.15); color: #1e7d34; font-weight: 600;">Healthy Plant</span>
+                {% else %}
+                <span class="badge" style="background: rgba(220,53,69,0.15); color: #dc3545; font-weight: 600;">Diseased</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+            <a href="{{ url_for('detect') }}" class="btn btn-secondary">Upload Another Leaf</a>
+            {% if result.image_filename %}
+            <a href="{{ url_for('download_report', filename=result.image_filename) }}" class="btn btn-primary">📄 Download PDF Report</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Agronomic Profile -->
+      <div>
+        <div class="card" style="padding: 28px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span class="category-badge {{ result.disease_info.category|lower if result.disease_info else 'fungal' }}">
+              {{ result.disease_info.category if result.disease_info else 'Pathology' }}
+            </span>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Crop: <strong>{{ result.crop }}</strong></span>
+          </div>
+
+          <h2 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 8px;">
+            {{ result.disease }}
+          </h2>
+
+          <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+            {{ result.disease_info.description if result.disease_info else 'Diagnosis completed using MobileNetV2 computer vision.' }}
+          </p>
+
+          {% if result.disease_info and result.disease_info.symptoms %}
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+              <span>🔍</span> Symptoms
+            </h3>
+            <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem;">
+              {% for symptom in result.disease_info.symptoms %}
+              <li style="margin-bottom: 4px;">{{ symptom }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if result.disease_info and result.disease_info.prevention %}
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+              <span>🛡️</span> Prevention Measures
+            </h3>
+            <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem;">
+              {% for prev in result.disease_info.prevention %}
+              <li style="margin-bottom: 4px;">{{ prev }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if result.disease_info and result.disease_info.management %}
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 1rem; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+              <span>💊</span> Recommended Management
+            </h3>
+            <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem;">
+              {% for mgmt in result.disease_info.management %}
+              <li style="margin-bottom: 4px;">{{ mgmt }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          <div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid var(--warning); padding: 12px 16px; border-radius: 4px; font-size: 0.8rem; color: #856404;">
+            <strong>Advisory:</strong> {{ result.disease_info.disclaimer if result.disease_info else 'Always consult your local agricultural extension service before applying chemical treatments.' }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="card" style="padding: 60px; text-align: center;">
+      <div style="font-size: 3rem; margin-bottom: 16px;">🌱</div>
+      <h3>No Diagnosis Data Available</h3>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Please upload a crop leaf image to initiate the diagnostic procedure.</p>
+      <a href="{{ url_for('detect') }}" class="btn btn-primary">Go to Detection</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

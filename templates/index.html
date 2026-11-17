@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block title %}CropCare AI – AI-Powered Crop Disease Detection{% endblock %}
+{% block meta_desc %}CropCare AI uses MobileNetV2 deep learning to detect crop diseases from leaf images. Supporting 38 disease classes across 14 crop types.{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" aria-label="Hero section">
+  <div id="hero-particles" class="hero-particles" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <!-- Left text -->
+    <div class="hero-text">
+      <div class="badge">
+        <span>🤖</span>
+        <span>AI-Powered · Deep Learning · Real-time</span>
+      </div>
+
+      <h1>
+        Protect Your Crops with<br>
+        <span>AI-Powered Disease</span><br>
+        Detection
+      </h1>
+
+      <p>
+        Upload a photo of your crop leaf and let our MobileNetV2 deep learning model
+        instantly identify diseases, provide treatment advice, and help you save your harvest.
+        Supporting 38 disease classes across 14 crop types.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="{{ url_for('detect') }}" class="btn btn-primary btn-lg" id="hero-detect-btn">
+          🔍 Detect Crop Disease
+        </a>
+        <a href="{{ url_for('diseases') }}" class="btn btn-outline btn-lg" id="hero-library-btn">
+          📚 Disease Library
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span data-count="38" data-suffix="+">38+</span>
+          <small>Disease Classes</small>
+        </div>
+        <div class="hero-stat">
+          <span data-count="14" data-suffix="+">14+</span>
+          <small>Crop Types</small>
+        </div>
+        <div class="hero-stat">
+          <span data-count="95" data-suffix="%">95%</span>
+          <small>Target Accuracy</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right visual -->
+    <div class="hero-visual">
+      <div class="hero-image-card">
+        <img src="{{ url_for('static', filename='images/hero-art.svg') }}"
+             alt="Crop leaf analysis with AI"
+             id="hero-leaf-img"
+             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22350%22><rect width=%22400%22 height=%22350%22 fill=%22%232d7a2d%22/><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%220.3em%22 fill=%22rgba(255,255,255,0.5)%22 font-size=%2260%22>🌿</text></svg>'">
+
+        <div class="hero-floating-badge top-left" aria-hidden="true">
+          <span>🤖</span>
+          <div>
+            <div style="font-weight:800;color:#1e7d34;font-size:0.9rem">AI Analysis</div>
+            <div style="font-size:0.72rem;color:#666">Deep Learning Active</div>
+          </div>
+        </div>
+
+        <div class="hero-floating-badge bottom-right" aria-hidden="true">
+          <span>✅</span>
+          <div>
+            <div style="font-weight:800;color:#27ae60;font-size:0.9rem">Instant Results</div>
+            <div style="font-size:0.72rem;color:#666">In under 2 seconds</div>
+          </div>
+        </div>
+      </div>
+
+      {% if not model_trained %}
+      <div style="margin-top:16px;background:rgba(255,193,7,0.15);border:1px solid rgba(255,193,7,0.4);border-radius:12px;padding:14px 18px;color:rgba(255,255,255,0.9);font-size:0.82rem;">
+        ⚠️ Model not yet trained. <a href="{{ url_for('about') }}#training" style="color:#ffc107;text-decoration:underline;">See training guide →</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FEATURES ══════════════ -->
+<section class="section" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">✨ Features</div>
+      <h2 class="section-title" id="features-heading">Why Choose CropCare AI?</h2>
+      <p class="section-desc">
+        A complete agricultural intelligence platform powered by state-of-the-art computer vision.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI-Based Detection</h3>
+        <p>MobileNetV2 transfer learning trained on the PlantVillage dataset delivers high-accuracy disease identification from a single leaf photo.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌾</div>
+        <h3>Multiple Crop Support</h3>
+        <p>Supports 14 crop types including Tomato, Potato, Apple, Corn, Grape, Pepper, Strawberry, Cherry, Peach, and Orange.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast Prediction</h3>
+        <p>Get disease classification results in under 2 seconds. No waiting, no complex setup — just upload and analyze.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💊</div>
+        <h3>Disease Prevention Guidance</h3>
+        <p>Every prediction includes symptoms, causes, prevention tips, and management practices sourced from agricultural research.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Confidence Scores</h3>
+        <p>See how confident the AI is in its prediction with visual confidence rings and top-3 alternative predictions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <h3>Downloadable Reports</h3>
+        <p>Generate and download a detailed PDF report for each prediction, including disease info and recommendations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile-Friendly</h3>
+        <p>Fully responsive design works seamlessly on smartphones, tablets, and desktops. Use it right from your field.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗂️</div>
+        <h3>Prediction History</h3>
+        <p>All predictions are saved with timestamps so you can track disease patterns in your crops over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<section class="section" style="background: linear-gradient(135deg, #f0f7f0, #e8f5e9);" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">🔄 Process</div>
+      <h2 class="section-title" id="how-heading">How It Works</h2>
+      <p class="section-desc">Four simple steps from photo to actionable insights.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">📷</div>
+        <h3>1. Upload Image</h3>
+        <p>Take a photo of the affected crop leaf and drag-drop or upload it to CropCare AI.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">🧠</div>
+        <h3>2. AI Analysis</h3>
+        <p>MobileNetV2 processes the 224×224 image through millions of learned parameters.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">🎯</div>
+        <h3>3. Disease Prediction</h3>
+        <p>The model identifies the crop, disease class, and confidence score in under 2 seconds.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">💡</div>
+        <h3>4. Recommendations</h3>
+        <p>Get detailed disease info, prevention methods, and management practices instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SUPPORTED CROPS ══════════════ -->
+<section class="section" aria-labelledby="crops-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">🌱 Coverage</div>
+      <h2 class="section-title" id="crops-heading">Supported Crops</h2>
+      <p class="section-desc">
+        CropCare AI detects diseases across {{ disease_count }} classes from the PlantVillage dataset.
+      </p>
+    </div>
+
+    <div class="crops-grid">
+      <div class="crop-chip"><span class="crop-emoji">🍅</span><span>Tomato</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🥔</span><span>Potato</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🍎</span><span>Apple</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🌽</span><span>Corn</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🍇</span><span>Grape</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🌶️</span><span>Pepper</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🍓</span><span>Strawberry</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🍒</span><span>Cherry</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🍑</span><span>Peach</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🍊</span><span>Orange</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🫐</span><span>Blueberry</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🌿</span><span>Soybean</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🍋</span><span>Squash</span></div>
+      <div class="crop-chip"><span class="crop-emoji">🌱</span><span>Raspberry</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA BANNER ══════════════ -->
+<section style="background:linear-gradient(135deg,#145a26,#1e7d34);padding:80px 0;text-align:center;" aria-labelledby="cta-heading">
+  <div class="container">
+    <h2 id="cta-heading" style="font-family:'Poppins',sans-serif;font-size:2.2rem;font-weight:800;color:white;margin-bottom:16px;">
+      Ready to Protect Your Crops?
+    </h2>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;max-width:500px;margin:0 auto 36px;line-height:1.8;">
+      Upload your first leaf image and get an AI-powered disease diagnosis in seconds.
+    </p>
+    <a href="{{ url_for('detect') }}" class="btn btn-primary btn-lg" id="cta-detect-btn"
+       style="background:white;color:var(--primary);box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+      🔍 Start Disease Detection →
+    </a>
+  </div>
+</section>
+
+{% endblock %}

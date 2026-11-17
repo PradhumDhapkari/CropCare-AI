@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block meta_desc %}CropCare AI – AI-powered crop disease detection using deep learning. Upload a leaf image to identify plant diseases instantly.{% endblock %}">
+  <title>{% block title %}CropCare AI – Intelligent Crop Disease Detection{% endblock %}</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.svg') }}" type="image/svg+xml">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar-inner">
+    <a href="{{ url_for('index') }}" class="navbar-brand" aria-label="CropCare AI Home">
+      <div class="logo-icon" aria-hidden="true">🌿</div>
+      CropCare AI
+    </a>
+
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="{{ url_for('index') }}"    id="nav-home">🏠 Home</a></li>
+      <li><a href="{{ url_for('detect') }}"   id="nav-detect">🔍 Detect Disease</a></li>
+      <li><a href="{{ url_for('diseases') }}" id="nav-library">📚 Disease Library</a></li>
+      <li><a href="{{ url_for('about') }}"    id="nav-about">ℹ️ About</a></li>
+      <li><a href="{{ url_for('contact') }}"  id="nav-contact">✉️ Contact</a></li>
+      <li><a href="{{ url_for('detect') }}"   class="nav-cta" id="nav-cta">🚀 Try It Now</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════ PAGE CONTENT ══════════════ -->
+<main id="main-content">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text">🌿 CropCare AI</div>
+        <p class="footer-desc">
+          AI-powered crop disease detection using MobileNetV2 deep learning.
+          Helping farmers identify plant diseases early and take preventive action.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('detect') }}">Detect Disease</a></li>
+          <li><a href="{{ url_for('diseases') }}">Disease Library</a></li>
+          <li><a href="{{ url_for('history') }}">History</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="{{ url_for('about') }}">Project Info</a></li>
+          <li><a href="{{ url_for('about') }}#model">MobileNetV2</a></li>
+          <li><a href="{{ url_for('about') }}#dataset">Dataset</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tech Stack</h4>
+        <ul>
+          <li><a href="#">TensorFlow / Keras</a></li>
+          <li><a href="#">MobileNetV2</a></li>
+          <li><a href="#">Flask (Python)</a></li>
+          <li><a href="#">PlantVillage Dataset</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 CropCare AI. Built with 🌿 and deep learning.</span>
+      <span>AI predictions are decision-support tools — always consult agronomists.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loading-overlay" role="status" aria-live="polite">
+  <div class="spinner" aria-hidden="true"></div>
+  <div class="loading-text" id="loading-text">AI is analyzing your image…</div>
+  <div class="loading-subtext">MobileNetV2 inference in progress</div>
+</div>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scroll-top-btn" aria-label="Scroll to top">↑</button>
+
+<!-- Chart.js (for future confidence charts) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<!-- Main JS -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+{% block extra_scripts %}{% endblock %}
+
+<!-- Active nav highlight -->
+<script>
+  (function(){
+    const path = window.location.pathname;
+    const map = {
+      '/':         'nav-home',
+      '/detect':   'nav-detect',
+      '/diseases': 'nav-library',
+      '/about':    'nav-about',
+      '/contact':  'nav-contact',
+      '/history':  'nav-home',
+    };
+    const id = map[path];
+    if (id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+    }
+  })();
+</script>
+</body>
+</html>

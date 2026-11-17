@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+
+{% block title %}Contact – CropCare AI{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section style="background: linear-gradient(135deg, #1a4d2e 0%, #2d7a4f 100%); padding: 64px 20px; text-align: center; color: #fff;">
+  <div style="font-size: 3rem; margin-bottom: 14px;">📬</div>
+  <h1 style="font-size: 2.6rem; font-weight: 800; margin-bottom: 14px; letter-spacing: -0.5px;">Get In Touch</h1>
+  <p style="font-size: 1.1rem; opacity: 0.88; max-width: 540px; margin: 0 auto; line-height: 1.7;">
+    Have feedback, questions, or want to collaborate? We'd love to hear from you.
+    Our team typically responds within 24 hours.
+  </p>
+</section>
+
+<!-- Main Content: 2-Column -->
+<section style="padding: 72px 20px; background: var(--bg);">
+  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start;">
+
+    <!-- Left: Contact Info Cards -->
+    <div>
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 28px;">Contact Information</h2>
+
+      <!-- Email Card -->
+      <div style="background: var(--surface); border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; gap: 18px; align-items: flex-start; border-left: 4px solid var(--primary);">
+        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">📧</div>
+        <div>
+          <div style="font-weight: 700; color: var(--text); margin-bottom: 4px; font-size: 0.95rem;">Email Us</div>
+          <a href="mailto:support@cropcare.ai" style="color: var(--primary); font-size: 0.92rem; text-decoration: none; font-weight: 600;">support@cropcare.ai</a>
+          <div style="color: var(--text-muted); font-size: 0.84rem; margin-top: 4px;">For technical support &amp; queries</div>
+        </div>
+      </div>
+
+      <!-- Location Card -->
+      <div style="background: var(--surface); border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; gap: 18px; align-items: flex-start; border-left: 4px solid #667eea;">
+        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">📍</div>
+        <div>
+          <div style="font-weight: 700; color: var(--text); margin-bottom: 4px; font-size: 0.95rem;">Location</div>
+          <div style="color: var(--text); font-size: 0.92rem; font-weight: 600;">India 🇮🇳</div>
+          <div style="color: var(--text-muted); font-size: 0.84rem; margin-top: 4px;">Open-source project — global community</div>
+        </div>
+      </div>
+
+      <!-- Response Time Card -->
+      <div style="background: var(--surface); border-radius: 14px; padding: 24px; margin-bottom: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; gap: 18px; align-items: flex-start; border-left: 4px solid #f59e0b;">
+        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #f59e0b, #ef4444); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">⏰</div>
+        <div>
+          <div style="font-weight: 700; color: var(--text); margin-bottom: 4px; font-size: 0.95rem;">Response Time</div>
+          <div style="color: var(--text); font-size: 0.92rem; font-weight: 600;">Within 24 hours</div>
+          <div style="color: var(--text-muted); font-size: 0.84rem; margin-top: 4px;">Mon–Fri, 9 AM – 6 PM IST</div>
+        </div>
+      </div>
+
+      <!-- GitHub / Social Links -->
+      <div style="background: #1a1a2e; border-radius: 14px; padding: 24px; color: #e2e8f0;">
+        <div style="font-weight: 700; margin-bottom: 16px; font-size: 0.95rem; color: #94a3b8;">🔗 Also find us at</div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 10px; color: #86efac; text-decoration: none; font-size: 0.9rem; font-weight: 600;">
+            <span style="font-size: 1.2rem;">🐙</span> GitHub Repository
+          </a>
+          <a href="https://www.kaggle.com/datasets/emmarex/plantdisease" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 10px; color: #38bdf8; text-decoration: none; font-size: 0.9rem; font-weight: 600;">
+            <span style="font-size: 1.2rem;">📊</span> Kaggle Dataset
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Contact Form -->
+    <div>
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 28px;">Send Us a Message</h2>
+
+      <!-- Alert Boxes -->
+      <div id="form-alert" class="alert alert-error" style="display:none; margin-bottom: 20px; padding: 14px 20px; border-radius: 10px; background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; font-size: 0.95rem;">
+        ⚠️ Please fix the errors below and try again.
+      </div>
+      <div id="form-success" class="alert alert-success" style="display:none; margin-bottom: 20px; padding: 14px 20px; border-radius: 10px; background: #d1fae5; border: 1px solid #6ee7b7; color: #065f46; font-size: 0.95rem;">
+        ✅ Thank you! Your message has been sent. We'll get back to you soon.
+      </div>
+
+      <form id="contact-form" novalidate style="background: var(--surface); border-radius: 16px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+
+        <!-- Name Field -->
+        <div style="margin-bottom: 24px;">
+          <label for="name" style="display: block; font-weight: 600; color: var(--text); margin-bottom: 8px; font-size: 0.95rem;">
+            Full Name <span style="color: #ef4444;">*</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="e.g. Ravi Kumar"
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.95rem; color: var(--text); background: var(--bg); outline: none; transition: border-color 0.2s; box-sizing: border-box;"
+            onfocus="this.style.borderColor='var(--primary)'"
+            onblur="this.style.borderColor='#e2e8f0'"
+          >
+          <span id="name-error" class="form-error" style="display: none; color: #ef4444; font-size: 0.82rem; margin-top: 6px; display: none;"></span>
+        </div>
+
+        <!-- Email Field -->
+        <div style="margin-bottom: 24px;">
+          <label for="email" style="display: block; font-weight: 600; color: var(--text); margin-bottom: 8px; font-size: 0.95rem;">
+            Email Address <span style="color: #ef4444;">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="e.g. ravi@example.com"
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.95rem; color: var(--text); background: var(--bg); outline: none; transition: border-color 0.2s; box-sizing: border-box;"
+            onfocus="this.style.borderColor='var(--primary)'"
+            onblur="this.style.borderColor='#e2e8f0'"
+          >
+          <span id="email-error" class="form-error" style="display: none; color: #ef4444; font-size: 0.82rem; margin-top: 6px;"></span>
+        </div>
+
+        <!-- Subject Field -->
+        <div style="margin-bottom: 24px;">
+          <label for="subject" style="display: block; font-weight: 600; color: var(--text); margin-bottom: 8px; font-size: 0.95rem;">
+            Subject <span style="color: var(--text-muted); font-weight: 400; font-size: 0.85rem;">(Optional)</span>
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="e.g. Question about disease detection accuracy"
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.95rem; color: var(--text); background: var(--bg); outline: none; transition: border-color 0.2s; box-sizing: border-box;"
+            onfocus="this.style.borderColor='var(--primary)'"
+            onblur="this.style.borderColor='#e2e8f0'"
+          >
+        </div>
+
+        <!-- Message Textarea -->
+        <div style="margin-bottom: 32px;">
+          <label for="message" style="display: block; font-weight: 600; color: var(--text); margin-bottom: 8px; font-size: 0.95rem;">
+            Your Message <span style="color: #ef4444;">*</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            placeholder="Describe your question or feedback in detail..."
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.95rem; color: var(--text); background: var(--bg); outline: none; resize: vertical; transition: border-color 0.2s; font-family: inherit; box-sizing: border-box;"
+            onfocus="this.style.borderColor='var(--primary)'"
+            onblur="this.style.borderColor='#e2e8f0'"
+          ></textarea>
+          <span id="message-error" class="form-error" style="display: none; color: #ef4444; font-size: 0.82rem; margin-top: 6px;"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          style="width: 100%; padding: 15px 32px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.1s; letter-spacing: 0.3px;"
+          onmouseover="this.style.opacity='0.9'; this.style.transform='translateY(-1px)'"
+          onmouseout="this.style.opacity='1'; this.style.transform='translateY(0)'"
+        >
+          Send Message 📨
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section style="padding: 70px 20px; background: #f0faf4;">
+  <div style="max-width: 860px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px;">❓ Frequently Asked Questions</h2>
+    <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 48px;">
+      Quick answers to common questions about CropCare AI.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 20px; text-align: left;">
+
+      <!-- FAQ 1 -->
+      <details style="background: var(--surface); border-radius: 14px; padding: 24px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); cursor: pointer;">
+        <summary style="font-weight: 700; color: var(--text); font-size: 1.02rem; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <span>🌿 How accurate is the disease detection model?</span>
+          <span style="color: var(--primary); font-size: 1.3rem; flex-shrink: 0;">+</span>
+        </summary>
+        <div style="margin-top: 16px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; border-top: 1px solid #e2e8f0; padding-top: 16px;">
+          Our MobileNetV2-based model achieves approximately <strong>90–95% accuracy</strong> on the PlantVillage
+          test set. However, real-world accuracy may vary depending on image quality, lighting conditions,
+          and whether the disease is in the 38 supported classes. For best results, take a close-up photo
+          of a single leaf in natural daylight.
+        </div>
+      </details>
+
+      <!-- FAQ 2 -->
+      <details style="background: var(--surface); border-radius: 14px; padding: 24px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); cursor: pointer;">
+        <summary style="font-weight: 700; color: var(--text); font-size: 1.02rem; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <span>🔒 Is my uploaded image data stored permanently?</span>
+          <span style="color: var(--primary); font-size: 1.3rem; flex-shrink: 0;">+</span>
+        </summary>
+        <div style="margin-top: 16px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; border-top: 1px solid #e2e8f0; padding-top: 16px;">
+          Uploaded images are saved locally to the <code style="background: #f1f5f9; padding: 1px 6px; border-radius: 4px;">static/uploads/</code> directory on the server
+          for the purpose of displaying prediction history within your session. No images are shared with
+          third parties or uploaded to any cloud storage. You can clear your history at any time from the
+          History page, which removes all stored references.
+        </div>
+      </details>
+
+      <!-- FAQ 3 -->
+      <details style="background: var(--surface); border-radius: 14px; padding: 24px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); cursor: pointer;">
+        <summary style="font-weight: 700; color: var(--text); font-size: 1.02rem; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <span>🚀 Can I use CropCare AI for my own research or project?</span>
+          <span style="color: var(--primary); font-size: 1.3rem; flex-shrink: 0;">+</span>
+        </summary>
+        <div style="margin-top: 16px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; border-top: 1px solid #e2e8f0; padding-top: 16px;">
+          Absolutely! CropCare AI is an open-source educational project. You are welcome to fork the
+          repository, adapt the model, and build upon the codebase for your own research or applications
+          under the project's open-source license. We only ask that you credit the original project and
+          the PlantVillage dataset authors in your work. If you do build something cool, let us know — 
+          we'd love to feature it!
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Clear previous errors
+    ['name-error', 'email-error', 'message-error'].forEach(function(id) {
+      var el = document.getElementById(id);
+      el.textContent = '';
+      el.style.display = 'none';
+    });
+    document.getElementById('form-alert').style.display = 'none';
+    document.getElementById('form-success').style.display = 'none';
+
+    var name    = document.getElementById('name').value.trim();
+    var email   = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+    var valid   = true;
+
+    if (!name) {
+      var ne = document.getElementById('name-error');
+      ne.textContent = 'Full name is required.';
+      ne.style.display = 'block';
+      document.getElementById('name').style.borderColor = '#ef4444';
+      valid = false;
+    }
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      var ee = document.getElementById('email-error');
+      ee.textContent = email ? 'Please enter a valid email address.' : 'Email address is required.';
+      ee.style.display = 'block';
+      document.getElementById('email').style.borderColor = '#ef4444';
+      valid = false;
+    }
+
+    if (!message || message.length < 10) {
+      var me = document.getElementById('message-error');
+      me.textContent = message ? 'Message must be at least 10 characters.' : 'Message is required.';
+      me.style.display = 'block';
+      document.getElementById('message').style.borderColor = '#ef4444';
+      valid = false;
+    }
+
+    if (!valid) {
+      document.getElementById('form-alert').style.display = 'block';
+      document.getElementById('form-alert').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Simulate success (in production, replace with fetch to backend endpoint)
+    document.getElementById('form-success').style.display = 'block';
+    document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('contact-form').reset();
+  });
+</script>
+
+{% endblock %}
