@@ -1,188 +1,117 @@
 {% extends "base.html" %}
 
-{% block title %}About – CropCare AI{% endblock %}
+{% block title %}About CropCare AI – Sustainable Agricultural Diagnostics{% endblock %}
+{% block meta_desc %}Learn about CropCare AI's mission, field scouting guide, integrated pest management (IPM) framework, and commitment to sustainable crop protection.{% endblock %}
 
 {% block content %}
 
 <!-- Hero Banner -->
-<section style="background: linear-gradient(135deg, #1a4d2e 0%, #2d7a4f 50%, #1a4d2e 100%); color: #fff; padding: 80px 20px; text-align: center;">
-  <div style="max-width: 800px; margin: 0 auto;">
-    <div style="font-size: 3rem; margin-bottom: 16px;">🌿</div>
-    <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -1px;">About CropCare AI</h1>
-    <p style="font-size: 1.2rem; opacity: 0.9; line-height: 1.7; max-width: 620px; margin: 0 auto;">
-      Harnessing the power of deep learning and computer vision to protect crops, empower farmers,
-      and build a more food-secure world — one leaf scan at a time.
+<section style="background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #1e7d34 100%); color: #fff; padding: 80px 20px; text-align: center; position: relative; overflow: hidden;">
+  <div style="max-width: 860px; margin: 0 auto; position: relative; z-index: 2;">
+    <div style="font-size: 3.2rem; margin-bottom: 16px;">🌿</div>
+    <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 18px; letter-spacing: -0.5px; line-height: 1.2;">
+      About CropCare AI
+    </h1>
+    <p style="font-size: 1.2rem; opacity: 0.92; line-height: 1.7; max-width: 680px; margin: 0 auto 32px;">
+      Empowering farmers, agronomists, and growers with instant, accessible crop diagnostics to protect yields,
+      reduce unnecessary chemical usage, and foster sustainable agricultural stewardship.
     </p>
+
+    <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+      <span style="background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.25);">
+        🌱 38 Disease Classes
+      </span>
+      <span style="background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.25);">
+        ⚡ Real-Time Field Scouting
+      </span>
+      <span style="background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.25);">
+        🛡️ Integrated Pest Management (IPM)
+      </span>
+    </div>
   </div>
 </section>
 
-<!-- What is Crop Disease Detection? -->
-<section style="padding: 70px 20px; background: var(--bg);">
-  <div style="max-width: 900px; margin: 0 auto;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 20px; text-align: center;">
-      🌱 What is Crop Disease Detection?
-    </h2>
-    <div style="background: var(--surface); border-radius: 16px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-left: 5px solid var(--primary);">
-      <p style="font-size: 1.08rem; color: var(--text); line-height: 1.85; margin-bottom: 18px;">
-        Crop disease detection is the process of identifying diseases, infections, and nutrient deficiencies
-        in plants by analyzing visual symptoms on leaves and other plant parts. Traditionally, this required
-        expert agronomists to physically inspect fields — a time-consuming and costly process.
+<!-- Mission & Vision -->
+<section id="mission" style="padding: 70px 20px; background: var(--bg);">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">
+        OUR PURPOSE
+      </span>
+      <h2 style="font-size: 2.2rem; color: var(--text-primary); font-weight: 800; margin-top: 6px;">
+        Bridging the Agricultural Scouting Gap
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 650px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
+        Specialized phytopathologists cannot be present in every field. CropCare AI delivers precision diagnostic guidance directly to the grower's hands.
       </p>
-      <p style="font-size: 1.08rem; color: var(--text); line-height: 1.85; margin-bottom: 18px;">
-        <strong style="color: var(--primary);">CropCare AI</strong> automates this by using a convolutional neural network trained on tens of thousands
-        of annotated plant images. A farmer simply photographs a plant leaf, uploads it to the app, and within
-        seconds receives a diagnosis — along with treatment recommendations.
-      </p>
-      <p style="font-size: 1.08rem; color: var(--text); line-height: 1.85;">
-        This approach makes expert-level plant pathology accessible to anyone with a smartphone, regardless of
-        location or agricultural knowledge, dramatically lowering the barrier to early intervention.
-      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+      
+      <div style="background: var(--surface); border-radius: 16px; padding: 32px 26px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 4px solid var(--primary);">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">🌾</div>
+        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Protecting Farm Yields</h3>
+        <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65;">
+          Early disease identification arrests outbreaks before pathogens spread systemically across crop blocks, securing farm productivity and family livelihoods.
+        </p>
+      </div>
+
+      <div style="background: var(--surface); border-radius: 16px; padding: 32px 26px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 4px solid var(--accent);">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">💧</div>
+        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Reducing Input Costs</h3>
+        <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65;">
+          Misdiagnosis often leads to ineffective blanket pesticide spraying. By identifying exact pathogens, farmers apply only what is needed, cutting costs and soil toxicity.
+        </p>
+      </div>
+
+      <div style="background: var(--surface); border-radius: 16px; padding: 32px 26px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 4px solid #28a745;">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">🤝</div>
+        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Equitable Diagnostics</h3>
+        <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65;">
+          Advanced visual diagnostics accessible anywhere via standard web browsers and smartphones, bringing expert-level plant health awareness to smallholder communities.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- Why Early Detection Matters -->
-<section style="padding: 70px 20px; background: #f0faf4;">
+<section id="impact" style="padding: 70px 20px; background: #f0faf4;">
   <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px;">
-      ⚠️ Why Early Detection Matters
+    <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">
+      GLOBAL CHALLENGE
+    </span>
+    <h2 style="font-size: 2.2rem; color: var(--text-primary); font-weight: 800; margin: 6px 0 12px;">
+      Why Timely Detection Matters
     </h2>
-    <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 48px;">
-      The numbers speak for themselves. Early intervention saves crops, money, and lives.
+    <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 48px; max-width: 650px; margin-left: auto; margin-right: auto;">
+      Crop health is fundamental to global food security, resilient supply chains, and environmental conservation.
     </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px;">
 
-      <div style="background: #fff; border-radius: 16px; padding: 36px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid #e53e3e;">
-        <div style="font-size: 3rem; font-weight: 900; color: #e53e3e; margin-bottom: 8px;">30%</div>
-        <div style="font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 10px;">Crop Losses Globally</div>
-        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
-          Up to 30% of global crop yields are lost every year due to plant diseases and pests,
-          threatening food security for billions.
-        </p>
-      </div>
-
-      <div style="background: #fff; border-radius: 16px; padding: 36px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--primary);">
-        <div style="font-size: 3rem; font-weight: 900; color: var(--primary); margin-bottom: 8px;">~2s</div>
-        <div style="font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 10px;">AI Detection Speed</div>
-        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
-          Our model delivers a confident prediction in under 2 seconds — far faster than any human
-          expert inspection in the field.
-        </p>
-      </div>
-
-      <div style="background: #fff; border-radius: 16px; padding: 36px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--accent);">
-        <div style="font-size: 3rem; font-weight: 900; color: var(--accent); margin-bottom: 8px;">38</div>
-        <div style="font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 10px;">Disease Classes</div>
-        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
-          Our model recognises 38 distinct plant disease categories spanning 14 crop types,
-          including healthy specimens as a control class.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- How Deep Learning Works -->
-<section style="padding: 70px 20px; background: var(--bg);">
-  <div style="max-width: 900px; margin: 0 auto;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-align: center;">
-      🧠 How Deep Learning Works
-    </h2>
-    <p style="text-align: center; color: var(--text-muted); font-size: 1.05rem; margin-bottom: 48px;">
-      Three powerful ideas combine to make CropCare AI possible.
-    </p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px;">
 
-      <div style="background: var(--surface); border-radius: 14px; padding: 32px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center;">
-        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem;">🔲</div>
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 12px;">1. Convolutional Neural Network (CNN)</h3>
-        <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65;">
-          CNNs learn to detect edges, textures, and patterns in images through stacked convolutional
-          layers. Each layer learns increasingly abstract visual features — from simple gradients to
-          complex shapes like spots and lesions.
+      <div style="background: #fff; border-radius: 16px; padding: 36px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 4px solid #e53e3e;">
+        <div style="font-size: 3rem; font-weight: 900; color: #e53e3e; margin-bottom: 8px;">20–40%</div>
+        <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Global Harvest Lost</div>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+          According to the UN Food and Agriculture Organization (FAO), up to 40% of global crops are lost to plant pests and pathogens annually.
         </p>
       </div>
 
-      <div style="background: var(--surface); border-radius: 14px; padding: 32px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center;">
-        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem;">🔄</div>
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: #5a4fa0; margin-bottom: 12px;">2. Transfer Learning</h3>
-        <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65;">
-          Instead of training from scratch, we borrow a model already trained on 1.4 million images
-          (ImageNet). This gives us a powerful visual feature extractor for free, then we fine-tune
-          it on plant disease data.
+      <div style="background: #fff; border-radius: 16px; padding: 36px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 4px solid var(--primary);">
+        <div style="font-size: 3rem; font-weight: 900; color: var(--primary); margin-bottom: 8px;">&lt; 2s</div>
+        <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Instant Turnaround</div>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+          Rapid leaf image analysis provides actionable insights on the spot, allowing growers to initiate containment before blight spreads.
         </p>
       </div>
 
-      <div style="background: var(--surface); border-radius: 14px; padding: 32px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center;">
-        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #f093fb, #f5576c); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem;">🤖</div>
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: #c0392b; margin-bottom: 12px;">3. MobileNetV2</h3>
-        <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65;">
-          MobileNetV2 is an efficient CNN architecture designed to run on mobile and edge devices.
-          Using inverted residuals and depthwise separable convolutions, it achieves high accuracy
-          with a fraction of the computational cost.
-        </p>
-      </div>
-
-    </div>
-
-    <!-- Flow diagram -->
-    <div style="margin-top: 48px; background: var(--surface); border-radius: 14px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
-      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; font-size: 0.95rem; font-weight: 600;">
-        <span style="background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 30px;">📷 Raw Image</span>
-        <span style="color: var(--text-muted);">→</span>
-        <span style="background: #667eea; color: #fff; padding: 10px 20px; border-radius: 30px;">🔧 Pre-process</span>
-        <span style="color: var(--text-muted);">→</span>
-        <span style="background: #f5576c; color: #fff; padding: 10px 20px; border-radius: 30px;">🤖 CNN Feature Extract</span>
-        <span style="color: var(--text-muted);">→</span>
-        <span style="background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 30px;">🎯 Classify</span>
-        <span style="color: var(--text-muted);">→</span>
-        <span style="background: #2d7a4f; color: #fff; padding: 10px 20px; border-radius: 30px;">📋 Result</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Why MobileNetV2? -->
-<section style="padding: 70px 20px; background: #f0faf4;">
-  <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px;">
-      🤖 Why MobileNetV2?
-    </h2>
-    <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 48px;">
-      We evaluated several architectures. MobileNetV2 stood out for all the right reasons.
-    </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px;">
-
-      <div style="background: #fff; border-radius: 14px; padding: 30px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.07);">
-        <div style="font-size: 2.4rem; margin-bottom: 14px;">⚡</div>
-        <h4 style="font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;">Lightweight</h4>
-        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Only 3.4M parameters and ~300MB footprint, making it ideal for deployment on resource-constrained servers and mobile devices.
-        </p>
-      </div>
-
-      <div style="background: #fff; border-radius: 14px; padding: 30px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.07);">
-        <div style="font-size: 2.4rem; margin-bottom: 14px;">📚</div>
-        <h4 style="font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;">Pre-trained on ImageNet</h4>
-        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Weights learned from 1.4M images give us exceptional out-of-the-box feature extraction requiring minimal fine-tuning data.
-        </p>
-      </div>
-
-      <div style="background: #fff; border-radius: 14px; padding: 30px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.07);">
-        <div style="font-size: 2.4rem; margin-bottom: 14px;">🏆</div>
-        <h4 style="font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;">88% ImageNet Accuracy</h4>
-        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Achieves top-1 accuracy of 71.8% on ImageNet, outperforming many heavier models while using far fewer operations (FLOPs).
-        </p>
-      </div>
-
-      <div style="background: #fff; border-radius: 14px; padding: 30px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.07);">
-        <div style="font-size: 2.4rem; margin-bottom: 14px;">⏱️</div>
-        <h4 style="font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;">Real-Time Capable</h4>
-        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Inference in under 2 seconds on CPU — no expensive GPU required, enabling truly accessible deployment anywhere.
+      <div style="background: #fff; border-radius: 16px; padding: 36px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 4px solid var(--accent);">
+        <div style="font-size: 3rem; font-weight: 900; color: var(--accent); margin-bottom: 8px;">38</div>
+        <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Pathology Classes</div>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+          Broad diagnostic coverage spanning fungal infections, bacterial blights, viral mosaics, and healthy control baselines across 14 crops.
         </p>
       </div>
 
@@ -190,239 +119,238 @@
   </div>
 </section>
 
-<!-- Model Architecture -->
-<section id="model" style="padding: 70px 20px; background: var(--bg);">
-  <div style="max-width: 860px; margin: 0 auto;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-align: center;">
-      🏗️ Model Architecture
-    </h2>
-    <p style="text-align: center; color: var(--text-muted); font-size: 1.05rem; margin-bottom: 48px;">
-      Our final model stacks custom layers on top of the frozen MobileNetV2 base.
-    </p>
-
-    <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 0;">
-
-      {% set layers = [
-        ('📷', 'Input Layer', '224 × 224 × 3 RGB Image', '#1a4d2e', '#fff'),
-        ('🔀', 'Data Augmentation', 'Random flip, rotation, zoom (training only)', '#2d7a4f', '#fff'),
-        ('🤖', 'MobileNetV2 Base', '155 layers — weights frozen (ImageNet pre-trained)', '#388e3c', '#fff'),
-        ('🌐', 'GlobalAveragePooling2D', 'Reduces spatial dims → 1280-dim feature vector', '#43a047', '#fff'),
-        ('📏', 'BatchNormalization', 'Stabilises and accelerates training', '#66bb6a', '#1a4d2e'),
-        ('🧩', 'Dense(256, ReLU)', 'Fully connected layer with 256 neurons', '#2196f3', '#fff'),
-        ('🎲', 'Dropout(0.5)', 'Regularisation — randomly drops 50% of neurons', '#ff7043', '#fff'),
-        ('🎯', 'Dense(38, Softmax)', 'Output: probability over 38 disease classes', '#7b1fa2', '#fff')
-      ] %}
-
-      {% for icon, name, desc, bg, fg in layers %}
-      <div style="width: 100%; max-width: 580px; background: {{ bg }}; color: {{ fg }}; border-radius: 12px; padding: 18px 28px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.12); position: relative; z-index: 1;">
-        <div style="font-size: 1.5rem; margin-bottom: 4px;">{{ icon }}</div>
-        <div style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">{{ name }}</div>
-        <div style="font-size: 0.85rem; opacity: 0.88;">{{ desc }}</div>
-      </div>
-      {% if not loop.last %}
-      <div style="width: 3px; height: 28px; background: linear-gradient(to bottom, {{ bg }}, #ccc);"></div>
-      {% endif %}
-      {% endfor %}
-
-    </div>
-
-    <div style="margin-top: 40px; background: #f0faf4; border-radius: 12px; padding: 24px 32px; border: 1px solid #c3e6cb;">
-      <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 12px;">📝 Training Configuration</h4>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; font-size: 0.9rem; color: var(--text);">
-        <div><strong>Optimizer:</strong> Adam</div>
-        <div><strong>Learning Rate:</strong> 1e-4</div>
-        <div><strong>Loss:</strong> Categorical Cross-Entropy</div>
-        <div><strong>Epochs:</strong> 20 (early stopping)</div>
-        <div><strong>Batch Size:</strong> 32</div>
-        <div><strong>Image Size:</strong> 224 × 224</div>
-        <div><strong>Train Split:</strong> 80%</div>
-        <div><strong>Val Split:</strong> 20%</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Dataset Section -->
-<section id="dataset" style="padding: 70px 20px; background: #f0faf4;">
-  <div style="max-width: 900px; margin: 0 auto;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-align: center;">
-      📂 Dataset: PlantVillage
-    </h2>
-    <p style="text-align: center; color: var(--text-muted); font-size: 1.05rem; margin-bottom: 48px;">
-      A widely-used benchmark dataset for plant pathology research.
-    </p>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-bottom: 40px;">
-      <div style="background: #fff; border-radius: 14px; padding: 30px; box-shadow: 0 2px 14px rgba(0,0,0,0.06);">
-        <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px;">📊 Dataset Statistics</h3>
-        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text); font-size: 0.95rem; line-height: 2;">
-          <li>🖼️ <strong>Total Images:</strong> 54,306</li>
-          <li>🏷️ <strong>Classes:</strong> 38 (disease + healthy)</li>
-          <li>🌾 <strong>Crop Types:</strong> 14</li>
-          <li>✅ <strong>Format:</strong> JPEG, RGB</li>
-          <li>📐 <strong>Resolution:</strong> Variable (resized to 224×224)</li>
-          <li>🔬 <strong>Source:</strong> Controlled lab conditions</li>
-        </ul>
-      </div>
-
-      <div style="background: #fff; border-radius: 14px; padding: 30px; box-shadow: 0 2px 14px rgba(0,0,0,0.06);">
-        <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 18px;">🌾 Supported Crops</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-          {% for crop in ['Apple', 'Blueberry', 'Cherry', 'Corn', 'Grape', 'Orange', 'Peach', 'Bell Pepper', 'Potato', 'Raspberry', 'Soybean', 'Squash', 'Strawberry', 'Tomato'] %}
-          <span style="background: #e8f5e9; color: var(--primary); padding: 5px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">{{ crop }}</span>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-
-    <div style="background: #fff; border-radius: 14px; padding: 28px 32px; box-shadow: 0 2px 14px rgba(0,0,0,0.06); text-align: center;">
-      <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
-        The PlantVillage dataset is publicly available on Kaggle. Download and place it in
-        <code style="background: #f1f5f9; padding: 2px 8px; border-radius: 4px; font-size: 0.88rem;">dataset/PlantVillage/</code>
-        before training the model.
+<!-- Integrated Pest Management (IPM) Framework -->
+<section id="ipm" style="padding: 70px 20px; background: var(--bg);">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 44px;">
+      <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">
+        SUSTAINABLE METHODOLOGY
+      </span>
+      <h2 style="font-size: 2.2rem; color: var(--text-primary); font-weight: 800; margin-top: 6px;">
+        Integrated Pest & Disease Management (IPM)
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 680px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
+        CropCare AI promotes an ecologically sound, multi-tiered approach to disease prevention, prioritizing cultural and biological tactics before chemical intervention.
       </p>
-      <a href="https://www.kaggle.com/datasets/emmarex/plantdisease" target="_blank" rel="noopener noreferrer"
-         style="display: inline-flex; align-items: center; gap: 10px; background: #20beff; color: #fff; padding: 14px 32px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1rem; box-shadow: 0 4px 16px rgba(32,190,255,0.3);">
-        📥 Download from Kaggle
-      </a>
     </div>
-  </div>
-</section>
 
-<!-- Training Instructions -->
-<section id="training" style="padding: 70px 20px; background: var(--bg);">
-  <div style="max-width: 860px; margin: 0 auto;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-align: center;">
-      🚀 Training Instructions (Windows)
-    </h2>
-    <p style="text-align: center; color: var(--text-muted); font-size: 1.05rem; margin-bottom: 40px;">
-      Follow these steps to set up the environment and train the model on your machine.
-    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
 
-    <div style="background: #1a1a2e; border-radius: 16px; padding: 36px; color: #e2e8f0; font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 0.9rem; line-height: 2; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
-      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px;">
-        <span style="width: 12px; height: 12px; background: #ff5f57; border-radius: 50%; display: inline-block;"></span>
-        <span style="width: 12px; height: 12px; background: #ffbd2e; border-radius: 50%; display: inline-block;"></span>
-        <span style="width: 12px; height: 12px; background: #28ca42; border-radius: 50%; display: inline-block;"></span>
-        <span style="margin-left: 12px; color: #64748b; font-size: 0.82rem;">PowerShell / Command Prompt</span>
+      <div style="background: var(--surface); border-radius: 14px; padding: 26px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.06); border-left: 4px solid #28a745;">
+        <div style="font-size: 2rem; margin-bottom: 10px;">🔄</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">1. Cultural Controls</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+          Crop rotation, wide row spacing for canopy airflow, clean seed stock, and rigorous sanitization of pruning shears.
+        </p>
       </div>
 
-      <div style="color: #94a3b8; margin-bottom: 6px;"># Step 1: Create and activate virtual environment</div>
-      <div><span style="color: #38bdf8;">PS&gt;</span> <span style="color: #86efac;">python -m venv venv</span></div>
-      <div><span style="color: #38bdf8;">PS&gt;</span> <span style="color: #86efac;">venv\Scripts\activate</span></div>
-      <br>
-      <div style="color: #94a3b8; margin-bottom: 6px;"># Step 2: Install dependencies</div>
-      <div><span style="color: #f59e0b;">(venv)</span> <span style="color: #38bdf8;">PS&gt;</span> <span style="color: #86efac;">pip install -r requirements.txt</span></div>
-      <br>
-      <div style="color: #94a3b8; margin-bottom: 6px;"># Step 3: Download PlantVillage dataset → place in:</div>
-      <div style="color: #fbbf24; padding-left: 24px;">dataset/PlantVillage/</div>
-      <br>
-      <div style="color: #94a3b8; margin-bottom: 6px;"># Step 4: Train the model</div>
-      <div><span style="color: #f59e0b;">(venv)</span> <span style="color: #38bdf8;">PS&gt;</span> <span style="color: #86efac;">python model/train_model.py</span></div>
-      <br>
-      <div style="color: #94a3b8; margin-bottom: 6px;"># Step 5: Run the Flask application</div>
-      <div><span style="color: #f59e0b;">(venv)</span> <span style="color: #38bdf8;">PS&gt;</span> <span style="color: #86efac;">python app.py</span></div>
-      <br>
-      <div style="color: #94a3b8; margin-bottom: 6px;"># Step 6: Open in your browser</div>
-      <div style="color: #c084fc;">🌐  http://localhost:5000</div>
-    </div>
-
-    <div style="margin-top: 24px; background: #fff3cd; border-left: 5px solid #f59e0b; border-radius: 10px; padding: 18px 24px; color: #92400e; font-size: 0.92rem;">
-      ⚠️ <strong>Tip:</strong> Training requires at least 8GB RAM. Using a GPU (CUDA) will significantly speed up training.
-      CPU training may take several hours. The trained model is saved to <code>model/crop_disease_model.h5</code>.
-    </div>
-  </div>
-</section>
-
-<!-- Tech Stack -->
-<section style="padding: 70px 20px; background: #f0faf4;">
-  <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px;">
-      🛠️ Technology Stack
-    </h2>
-    <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 48px;">
-      Built with industry-standard, battle-tested open-source tools.
-    </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px;">
-
-      {% set tech = [
-        ('🐍', 'Python', '3.10+', '#3776ab'),
-        ('🧠', 'TensorFlow', '2.x / Keras', '#ff6f00'),
-        ('🤖', 'MobileNetV2', 'Architecture', '#388e3c'),
-        ('🌐', 'Flask', '3.x', '#000000'),
-        ('👁️', 'OpenCV', 'Image Processing', '#5c3d14'),
-        ('🔢', 'NumPy', 'Numerical Computing', '#013243'),
-        ('🖼️', 'Pillow', 'PIL / Image I/O', '#e76f51'),
-        ('📊', 'scikit-learn', 'Metrics & Utilities', '#f7931e')
-      ] %}
-
-      {% for emoji, name, role, color in tech %}
-      <div style="background: #fff; border-radius: 14px; padding: 24px 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 3px solid {{ color }};">
-        <div style="font-size: 2.2rem; margin-bottom: 10px;">{{ emoji }}</div>
-        <div style="font-size: 1rem; font-weight: 700; color: {{ color }}; margin-bottom: 4px;">{{ name }}</div>
-        <div style="font-size: 0.8rem; color: var(--text-muted);">{{ role }}</div>
+      <div style="background: var(--surface); border-radius: 14px; padding: 26px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.06); border-left: 4px solid #17a2b8;">
+        <div style="font-size: 2rem; margin-bottom: 10px;">🐞</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">2. Biological Defense</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+          Beneficial soil microorganisms, predatory mites, companion planting, and mycorrhizal fungi to enhance natural resistance.
+        </p>
       </div>
-      {% endfor %}
+
+      <div style="background: var(--surface); border-radius: 14px; padding: 26px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.06); border-left: 4px solid #ffc107;">
+        <div style="font-size: 2rem; margin-bottom: 10px;">🧤</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">3. Physical & Mechanical</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+          Drip irrigation to avoid wet leaves, reflective plastic mulches to repel vectors, and prompt removal of diseased leaf litter.
+        </p>
+      </div>
+
+      <div style="background: var(--surface); border-radius: 14px; padding: 26px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.06); border-left: 4px solid #fd7e14;">
+        <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">4. Targeted Chemistry</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+          Used strictly as a targeted last resort, adhering to registered active ingredients, correct timing, and required pre-harvest intervals.
+        </p>
+      </div>
 
     </div>
   </div>
 </section>
 
-<!-- Limitations -->
-<section style="padding: 70px 20px; background: var(--bg);">
-  <div style="max-width: 860px; margin: 0 auto;">
-    <h2 style="font-size: 2rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-align: center;">
-      ⚠️ Project Limitations
-    </h2>
-    <p style="text-align: center; color: var(--text-muted); font-size: 1.05rem; margin-bottom: 40px;">
-      Transparency is key. Here's what you should know before relying on this tool.
-    </p>
-    <div style="display: grid; gap: 16px;">
-      {% set limits = [
-        ('🔬', 'Lab-Condition Bias', 'Trained on PlantVillage images taken in controlled environments. Performance on field photos with varying lighting, angles, and backgrounds may be reduced.'),
-        ('🌍', 'Limited Crop Coverage', 'Only 14 crop types are supported. Many important staple crops (wheat, rice, cassava) are not included in the current model.'),
-        ('🦠', 'No Multi-Disease Detection', 'The model predicts a single disease per image. Plants exhibiting multiple concurrent diseases or nutrient deficiencies may be misclassified.'),
-        ('📱', 'Image Quality Dependency', 'Blurry, overexposed, or low-resolution images may result in inaccurate predictions. Clear, well-lit photos of a single leaf work best.'),
-        ('💊', 'No Treatment Database', 'The app identifies disease but does not currently provide a comprehensive treatment or pesticide recommendation database.')
-      ] %}
-      {% for icon, title, text in limits %}
-      <div style="background: var(--surface); border-radius: 12px; padding: 20px 24px; display: flex; gap: 18px; align-items: flex-start; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #e53e3e;">
-        <div style="font-size: 1.6rem; flex-shrink: 0; margin-top: 2px;">{{ icon }}</div>
+<!-- Field Scouting & Leaf Photography Best Practices -->
+<section id="scouting-guide" style="padding: 70px 20px; background: #f0faf4;">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">
+        FIELD SCOUTING GUIDE
+      </span>
+      <h2 style="font-size: 2.2rem; color: var(--text-primary); font-weight: 800; margin-top: 6px;">
+        Best Practices for Leaf Photography
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 640px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
+        High-quality field imagery ensures accurate pathogen matching. Follow these field recommendations when capturing leaf samples.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+
+      <div style="background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; gap: 16px; align-items: flex-start;">
+        <div style="font-size: 1.8rem; background: #e8f5e9; border-radius: 10px; padding: 10px; line-height: 1;">📐</div>
         <div>
-          <div style="font-weight: 700; color: var(--text); margin-bottom: 6px;">{{ title }}</div>
-          <div style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65;">{{ text }}</div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Frame the Leaf Dominantly</h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            Position the leaf so that it occupies at least 70% of the frame. Avoid capturing excessive background soil or extraneous foliage.
+          </p>
         </div>
       </div>
-      {% endfor %}
+
+      <div style="background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; gap: 16px; align-items: flex-start;">
+        <div style="font-size: 1.8rem; background: #e8f5e9; border-radius: 10px; padding: 10px; line-height: 1;">☀️</div>
+        <div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Use Diffused Daylight</h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            Capture under bright indirect morning or late-afternoon sun. Avoid direct flash or harsh direct midday shadows that bleach subtle lesion borders.
+          </p>
+        </div>
+      </div>
+
+      <div style="background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; gap: 16px; align-items: flex-start;">
+        <div style="font-size: 1.8rem; background: #e8f5e9; border-radius: 10px; padding: 10px; line-height: 1;">🔍</div>
+        <div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Target Active Symptoms</h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            Focus on leaves showing active marginal halos and distinct spots rather than completely decayed, crispy dead tissue where pathogens have withered.
+          </p>
+        </div>
+      </div>
+
+      <div style="background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; gap: 16px; align-items: flex-start;">
+        <div style="font-size: 1.8rem; background: #e8f5e9; border-radius: 10px; padding: 10px; line-height: 1;">🍃</div>
+        <div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Check Both Surfaces</h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            Many fungal spores and pests (such as downy mildew, rust pustules, and spider mites) originate on the underside of the leaf blade.
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- Future Enhancements -->
-<section style="padding: 70px 20px; background: linear-gradient(135deg, #1a4d2e 0%, #2d7a4f 100%); color: #fff;">
-  <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 12px;">🔮 Future Enhancements</h2>
-    <p style="opacity: 0.85; font-size: 1.05rem; margin-bottom: 48px;">
-      The roadmap for making CropCare AI even more powerful.
+<!-- The Complete Diagnostic Workflow -->
+<section id="workflow" style="padding: 70px 20px; background: var(--bg);">
+  <div style="max-width: 960px; margin: 0 auto; text-align: center;">
+    <span style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">
+      END-TO-END PROCESS
+    </span>
+    <h2 style="font-size: 2.2rem; color: var(--text-primary); font-weight: 800; margin: 6px 0 12px;">
+      From Leaf Photo to Actionable Farm Strategy
+    </h2>
+    <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 48px; max-width: 650px; margin-left: auto; margin-right: auto;">
+      A seamless 4-step diagnostic journey designed for speed and clarity in agricultural field conditions.
     </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px;">
-      {% set roadmap = [
-        ('📱', 'Mobile App', 'Native iOS/Android app with offline inference using TensorFlow Lite'),
-        ('🌾', 'More Crops', 'Expand to wheat, rice, cassava, and other staple crops via field-collected datasets'),
-        ('💊', 'Treatment Engine', 'Integrated remediation database with organic and chemical treatment options'),
-        ('🗺️', 'Disease Heatmap', 'Geo-tagged predictions to generate regional disease outbreak heatmaps'),
-        ('🎙️', 'Voice Output', 'Multi-language audio results for farmers with limited literacy'),
-        ('🔄', 'Continual Learning', 'Federated learning to improve model accuracy from real-world user data'),
-        ('🤝', 'Expert Integration', 'Direct video consultation feature connecting farmers to agronomists'),
-        ('📈', 'Severity Grading', 'Predict disease severity (mild/moderate/severe) beyond binary classification')
-      ] %}
-      {% for icon, title, text in roadmap %}
-      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 14px; padding: 26px 20px; text-align: left; border: 1px solid rgba(255,255,255,0.15);">
-        <div style="font-size: 2rem; margin-bottom: 12px;">{{ icon }}</div>
-        <div style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;">{{ title }}</div>
-        <div style="font-size: 0.87rem; opacity: 0.82; line-height: 1.6;">{{ text }}</div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; text-align: left;">
+
+      <div style="background: var(--surface); border-radius: 14px; padding: 26px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-top: 3px solid var(--primary);">
+        <div style="font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">01. Upload</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Field Capture</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+          Upload a clear photograph of a single leaf directly from your phone camera or computer.
+        </p>
       </div>
-      {% endfor %}
+
+      <div style="background: var(--surface); border-radius: 14px; padding: 26px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-top: 3px solid var(--accent);">
+        <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">02. Analysis</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Symptom Matching</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+          Visual patterns are scanned for distinctive lesions, bacterial spots, chlorosis, and mildew markings.
+        </p>
+      </div>
+
+      <div style="background: var(--surface); border-radius: 14px; padding: 26px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-top: 3px solid #28a745;">
+        <div style="font-size: 1.2rem; font-weight: 800; color: #28a745; margin-bottom: 8px;">03. Diagnosis</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Agronomic Profile</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+          Receive the diagnosed disease name, health state, confidence score, causes, and cultural prevention steps.
+        </p>
+      </div>
+
+      <div style="background: var(--surface); border-radius: 14px; padding: 26px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-top: 3px solid #17a2b8;">
+        <div style="font-size: 1.2rem; font-weight: 800; color: #17a2b8; margin-bottom: 8px;">04. Record</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">PDF Certificate</h4>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+          Download an official diagnostic certificate and track historical field records in your local prediction log.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Agricultural Advisory Notice -->
+<section id="advisory" style="padding: 60px 20px; background: #fff8e1;">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <div style="display: flex; gap: 20px; align-items: flex-start;">
+      <div style="font-size: 2.4rem; line-height: 1; flex-shrink: 0;">⚠️</div>
+      <div>
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: #856404; margin-bottom: 8px;">
+          Agricultural Extension & Safety Advisory
+        </h3>
+        <p style="font-size: 0.95rem; color: #856404; line-height: 1.7; margin-bottom: 12px;">
+          CropCare AI is designed as a computerized scouting aid and educational reference tool. While developed with rigorous plant pathology benchmarks, environmental stress, nutrient deficiencies, and overlapping infections can produce complex visual symptoms.
+        </p>
+        <p style="font-size: 0.92rem; color: #6d4c00; line-height: 1.7;">
+          <strong>Responsible Use Notice:</strong> Always confirm serious agricultural diagnoses with your local university extension office, certified crop advisor (CCA), or registered plant pathology clinic. Never apply chemical treatments without verifying local regulatory compliance, active ingredient registrations, and exact safety intervals.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Future Agronomic Innovations -->
+<section id="roadmap" style="padding: 70px 20px; background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%); color: #fff;">
+  <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+    <span style="color: #a3e635; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">
+      THE ROAD AHEAD
+    </span>
+    <h2 style="font-size: 2.2rem; font-weight: 800; margin: 6px 0 12px;">
+      Future Agronomic Innovations
+    </h2>
+    <p style="opacity: 0.88; font-size: 1.05rem; margin-bottom: 48px; max-width: 650px; margin-left: auto; margin-right: auto;">
+      Expanding our technology capabilities to build a truly resilient, connected digital agriculture ecosystem.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px;">
+
+      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 14px; padding: 24px; text-align: left; border: 1px solid rgba(255,255,255,0.16);">
+        <div style="font-size: 2rem; margin-bottom: 12px;">📱</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Offline Mobile Deployment</h4>
+        <p style="font-size: 0.88rem; opacity: 0.84; line-height: 1.6;">
+          Native mobile apps with offline inference for remote farmland without cellular connectivity.
+        </p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 14px; padding: 24px; text-align: left; border: 1px solid rgba(255,255,255,0.16);">
+        <div style="font-size: 2rem; margin-bottom: 12px;">🌾</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Expanded Staple Crops</h4>
+        <p style="font-size: 0.88rem; opacity: 0.84; line-height: 1.6;">
+          Extending diagnostics to crucial field staples including wheat, rice, cassava, and sorghum.
+        </p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 14px; padding: 24px; text-align: left; border: 1px solid rgba(255,255,255,0.16);">
+        <div style="font-size: 2rem; margin-bottom: 12px;">🗺️</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Outbreak Early Warning</h4>
+        <p style="font-size: 0.88rem; opacity: 0.84; line-height: 1.6;">
+          Aggregated, anonymized regional telemetry to map emerging pathogen waves and notify neighboring farms.
+        </p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 14px; padding: 24px; text-align: left; border: 1px solid rgba(255,255,255,0.16);">
+        <div style="font-size: 2rem; margin-bottom: 12px;">🌦️</div>
+        <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;">Microclimate Telemetry</h4>
+        <p style="font-size: 0.88rem; opacity: 0.84; line-height: 1.6;">
+          Combining leaf visual diagnostics with local humidity, temperature, and dew point forecasts for proactive disease risk modeling.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
